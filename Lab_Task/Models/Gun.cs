@@ -35,7 +35,7 @@ namespace Lab_Task.Models
         {
            if (BulletLeft!=0)
             {              
-                count = MagazineSize;             
+                count = BulletLeft;             
                 BulletLeft = 0;
             }          
         }
@@ -49,8 +49,16 @@ namespace Lab_Task.Models
             else
             {
                 TotalBulletSize -=count;
-                BulletLeft = MagazineSize;               
+                if (TotalBulletSize>=MagazineSize)
+                {
+                    BulletLeft = MagazineSize;
+                }
+                else
+                {
+                    BulletLeft = TotalBulletSize;
+                }
                 count = 0;
+                              
                 Console.WriteLine($" You have {TotalBulletSize} bullet");
             }          
         }
